@@ -3,6 +3,11 @@ package com.bridgelabz;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class AddressBook {
     public static Scanner sc = new Scanner(System.in);
     public ArrayList<Contacts> contactList = new ArrayList<>();
@@ -165,6 +170,31 @@ public class AddressBook {
         for(Contacts contact: list){
             System.out.println("First Name: "+contact.getFirstName());
             System.out.println("Last Name: "+contact.getLastname());
+        }
+    }
+
+
+//UC13
+public void writeData(String writeAddressBookName) {
+    StringBuffer buffer = new StringBuffer();
+    contactList.forEach(addressBook -> {
+        String dataString = addressBook.toString().concat("\n");
+        buffer.append(dataString);
+    });
+    try {
+        Files.write(Paths.get("addressBook_file.txt"), buffer.toString().getBytes());
+
+    } catch (IOException e) {
+
+    }
+}
+
+    public void readData(String readAddressBookName) {
+        try {
+            Files.lines(new File("addressBook_file.txt").toPath()).map(line -> line.trim()).forEach(line -> System.out.println(line));
+
+        } catch (IOException e) {
+
         }
     }
 }

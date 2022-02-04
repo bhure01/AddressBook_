@@ -13,6 +13,19 @@ public class Contacts {
     private String phoneNum;
     private String emailID;
 
+
+    //Method of Contacts class
+    public Contacts(String firstName, String lastName, String address, String city, String state, String email, String phoneNumber, String zip) {
+        setFirstName(firstName);
+        setLastname(lastName);
+        setAddress(address);
+        setCity(city);
+        setState(state);
+        setEmailID(email);
+        setPhoneNum(phoneNumber);
+        setZip(zip);
+    }
+
     //Adding Getter and Setter Methods for the above Variables of Contact class
     public String getFirstName() {
         return firstName;
@@ -78,14 +91,9 @@ public class Contacts {
         this.emailID = emailID;
     }
 
-    public Contacts(String firstName, String lastName, String address, String city, String state, String email, String phoneNumber, String zip) {
-        setFirstName(firstName);
-        setLastname(lastName);
-        setAddress(address);
-        setCity(city);
-        setState(state);
-        setEmailID(email);
-        setPhoneNum(phoneNumber);
-        setZip(zip);
+    @Override                           // to return the values of object
+    public String toString() {
+        return "Contact Details [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
+                + city + ", state=" + state + ", email=" + emailID + ", zip=" + zip + ", phoneNumber=" + phoneNum + "]";
     }
 }

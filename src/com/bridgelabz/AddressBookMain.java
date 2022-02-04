@@ -195,14 +195,17 @@ class AddressBookMain {
             System.out.println("10.Sort Contact By City Name");
             System.out.println("11.Sort Contact By State Name");
             System.out.println("12.Sort Contact By Zip Code");
-            System.out.println("13.Exit");
+            System.out.println("13.Write Data into file");
+            System.out.println("14.Read Data from console");
+            System.out.println("15.Exit");
+            String addressBookName = null;
 
             System.out.println("Enter the Choice: ");
             int option = sc.nextInt();
             switch (option){
                 case 1:
                     System.out.println("Enter the Name of Address Book: ");
-                    String addressBookName = sc.next();
+                    addressBookName = sc.next();
                     if(addressBookMain.addressBookListMap.containsKey(addressBookName)){
                         System.out.println("The Address Book is Already Exists");
                         break;
@@ -274,6 +277,17 @@ class AddressBookMain {
                     break;
 
                 case 13:
+                    System.out.println("Read Data into File");
+                    addressBook.writeData(addressBookName);
+                    break;
+
+                case 14:
+                    System.out.println("Write Data from Console");
+                    addressBook.readData(addressBookName);
+                    break;
+
+                case 15:
+                    System.out.println("Exit");
                     flag = false;
                     break;
             }
